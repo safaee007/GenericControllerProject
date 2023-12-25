@@ -2,7 +2,7 @@
 {
     public class SharedVariables
     {
-        public enum ApiResultCode
+        public enum ApiResultStatusCode
         {
             Success = 1,
             UnSuccess = 2,

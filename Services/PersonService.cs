@@ -1,11 +1,12 @@
 ﻿using GenericController.Entities;
 using GenericController.Intefaces;
+using GenericControllerProject.Enums;
 
 namespace GenericController.Services
 {
     public class PersonService : IPersonService
     {
-        public async Task<List<Person>> List()
+        public async Task<(SharedVariables.ApiResultStatusCode, List<Person>)> List()
         {
             List<Person> people = new List<Person>();
             people.Add(new Person
@@ -21,32 +22,33 @@ namespace GenericController.Services
                 Name = "SaeedSafaee2",
             });
 
-            return people;
+            return (SharedVariables.ApiResultStatusCode.Success, people);
         }
 
-        public async Task<Person> Item(Guid uid)
+        public async Task<(SharedVariables.ApiResultStatusCode, Person)> Item(Guid uid)
         {
-            return new Person
-            {
-                UID = Guid.NewGuid(),
-                Age = 1,
-                Name = "Saeed Safaee",
-            };
+            Person person = new Person();
+
+            person.UID = Guid.NewGuid();
+            person.Age = 1;
+            person.Name = "Saeed Safaee";
+
+            return (SharedVariables.ApiResultStatusCode.Success, person);
         }
 
-        public async Task Add(Person model)
+        public async Task<SharedVariables.ApiResultStatusCode> Add(Person model)
         {
-            throw new NotImplementedException();
+            return SharedVariables.ApiResultStatusCode.Success;
         }
 
-        public async Task Edit(Person model)
+        public async Task<SharedVariables.ApiResultStatusCode> Edit(Person model)
         {
-            throw new NotImplementedException();
+            return SharedVariables.ApiResultStatusCode.Success;
         }
 
-        public async Task Delete(Guid uid)
+        public async Task<SharedVariables.ApiResultStatusCode> Delete(Guid uid)
         {
-            throw new NotImplementedException();
+            return SharedVariables.ApiResultStatusCode.Success;
         }
     }
 }

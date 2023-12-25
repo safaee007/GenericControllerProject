@@ -1,21 +1,22 @@
 ﻿using GenericController.Entities;
 using GenericController.Intefaces;
+using GenericControllerProject.Enums;
 
 namespace GenericController.Services
 {
     public class CourseService : ICourseService
     {
-        public async Task<List<Course>> List()
+        public async Task<(SharedVariables.ApiResultStatusCode, List<Course>)> List()
         {
-            List<Course> people = new List<Course>();
-            people.Add(new Course
+            List<Course> courses = new List<Course>();
+            courses.Add(new Course
             {
                 UID = Guid.NewGuid(),
                 Title = "Programing 1",
                 Author = "Saeed Safaee",
                 Description = "Description",
             });
-            people.Add(new Course
+            courses.Add(new Course
             {
                 UID = Guid.NewGuid(),
                 Title = "Programing 2",
@@ -23,31 +24,32 @@ namespace GenericController.Services
                 Description = "Description",
             });
 
-            return people;
+            return (SharedVariables.ApiResultStatusCode.Success, courses);
         }
 
-        public async Task<Course> Item(Guid uid)
+        public async Task<(SharedVariables.ApiResultStatusCode, Course)> Item(Guid uid)
         {
-            return new Course
-            {
-                UID = Guid.NewGuid(),
-                Title = "Programing 1",
-                Author = "Saeed Safaee",
-                Description = "Description"
-            };
+            Course course = new Course();
+
+            course.UID = Guid.NewGuid();
+            course.Title = "Programing 1";
+            course.Author = "Saeed Safaee";
+            course.Description = "Description";
+
+            return (SharedVariables.ApiResultStatusCode.Success, course);
         }
 
-        public async Task Add(Course model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public async Task Edit(Course model)
+        public async Task<SharedVariables.ApiResultStatusCode> Add(Course model)
         {
             throw new NotImplementedException();
         }
 
-        public async Task Delete(Guid uid)
+        public async Task<SharedVariables.ApiResultStatusCode> Edit(Course model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<SharedVariables.ApiResultStatusCode> Delete(Guid uid)
         {
             throw new NotImplementedException();
         }

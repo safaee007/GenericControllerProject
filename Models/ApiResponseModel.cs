@@ -4,8 +4,8 @@ namespace GenericController.Models
 {
     public class ApiResponseModel
     {
-        public SharedVariables.ApiResultCode Code { get; set; }
+        public SharedVariables.ApiResultStatusCode Code { get; set; }
         public object Result { get; set; }
-        public string Message { get; set; }
+        public string Message { get; set; } = string.Empty;
     }
 }
