@@ -1,6 +1,8 @@
-﻿namespace GenericController.Intefaces
+﻿using GenericController.Entities;
+
+namespace GenericController.Intefaces
 {
-    public interface IGenericService<T> //where T : BaseModel
+    public interface IGenericService<T> //where T : BaseEntity
     {
         Task<List<T>> List();
         Task<T> Item(Guid uid);

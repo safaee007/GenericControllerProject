@@ -5,27 +5,46 @@ namespace GenericController.Services
 {
     public class PersonService : IPersonService
     {
-        public Task Delete(Guid uid)
+        public async Task<List<Person>> List()
+        {
+            List<Person> people = new List<Person>();
+            people.Add(new Person
+            {
+                UID = Guid.NewGuid(),
+                Age = 1,
+                Name = "Saeed Safaee",
+            });
+            people.Add(new Person
+            {
+                UID = Guid.NewGuid(),
+                Age = 1,
+                Name = "SaeedSafaee2",
+            });
+
+            return people;
+        }
+
+        public async Task<Person> Item(Guid uid)
+        {
+            return new Person
+            {
+                UID = Guid.NewGuid(),
+                Age = 1,
+                Name = "Saeed Safaee",
+            };
+        }
+
+        public async Task Add(Person model)
         {
             throw new NotImplementedException();
         }
 
-        public Task Edit(Person model)
+        public async Task Edit(Person model)
         {
             throw new NotImplementedException();
         }
 
-        public Task Add(Person model)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Person> Item(Guid uid)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<List<Person>> List()
+        public async Task Delete(Guid uid)
         {
             throw new NotImplementedException();
         }

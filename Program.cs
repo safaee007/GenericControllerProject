@@ -1,3 +1,6 @@
+using GenericController.Intefaces;
+using GenericController.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,8 +10,8 @@ builder.Services.AddControllers();
 //{
 //    options.UseSqlServer(Configuration.GetConnectionString("Connection"));
 //});
-//builder.Services.AddScoped(typeof(IGenericService<>), typeof(GenericService<>));
-//builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddTransient<IPersonService, PersonService>();
+builder.Services.AddTransient<ICourseService, CourseService>();
 
 
 var app = builder.Build();

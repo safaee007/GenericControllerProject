@@ -4,9 +4,9 @@ using GenericController.Intefaces;
 
 namespace GenericControllerProject.Controllers
 {
-    public class PersonController : GenericController<Person, IPersonService>
+    public class CourseController : GenericController<Course, ICourseService>
     {
-        public PersonController(IPersonService personService) : base(personService)
+        public CourseController(ICourseService courseService) : base(courseService)
         {
 
         }
