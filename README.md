@@ -12,6 +12,5 @@ Generic template for Rashed-A
 
 
 ```
-Just checking controller and service generic
-Without architecture
+Just checking controller and service generic without architecture
 ```
