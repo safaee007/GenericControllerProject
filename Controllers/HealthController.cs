@@ -4,7 +4,7 @@ namespace GenericController.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class Health : ControllerBase
+    public class HealthController : ControllerBase
     {
         [HttpGet]
         public async Task<string> Get()
