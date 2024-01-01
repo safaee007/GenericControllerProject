@@ -1,3 +1,4 @@
+using AutoMapper;
 using GenericController.Intefaces;
 using GenericController.Models;
 using GenericControllerProject.Enums;
@@ -7,17 +8,20 @@ namespace GenericController.Controllers
 {
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public abstract class GenericController<TEntity, TService> : ControllerBase
+    public abstract class GenericController<TEntity, TService, TDto> : ControllerBase
         where TEntity : class
+        where TDto : class
         where TService : IGenericService<TEntity>
     {
         private readonly TService _service;
+        private readonly IMapper _mapper;
         private readonly ILogger<TEntity> _logger;
 
-        public GenericController(TService service)
+        public GenericController(TService service, IMapper mapper)
         {
             //_logger = logger;
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -28,12 +32,13 @@ namespace GenericController.Controllers
             var data = await _service.List();
 
             response.Code = data.Item1;
-            response.Result = data.Item2;
+            response.Result = _mapper.Map<IEnumerable<TDto>>(data.Item2);
 
             return Ok(response);
         }
 
         [HttpGet]
+        //[HttpGet("{uid}")]
         public async Task<IActionResult> Item(Guid uid)
         {
             ApiResponseModel response = new ApiResponseModel();
@@ -41,7 +46,7 @@ namespace GenericController.Controllers
             var data = await _service.Item(uid);
 
             response.Code = data.Item1;
-            response.Result = data.Item2;
+            response.Result = _mapper.Map<TDto>(data.Item2);
 
             return Ok(response);
         }

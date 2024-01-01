@@ -7,5 +7,6 @@ namespace GenericController.Entities
         [Key]
         public int ID { get; set; }
         public Guid UID { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }
