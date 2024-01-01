@@ -9,3 +9,8 @@ Generic template for Rashed-A
 * git clone 
 * cd folderName
 * dotnet run  //http://localhost:5246/Health
+
+
+```
+Just checking controller and service generic without architecture
+```
